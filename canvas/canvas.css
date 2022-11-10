@@ -1,0 +1,16 @@
+@import url("../style.css");
+
+canvas{
+    background-color: white;
+    border: 4px solid black;
+}
+
+.container-buttons{
+    width: 70vw;
+    display: inline-block;
+    padding: 5px;
+}
+
+button {
+    width: max-content;
+}
