@@ -1,0 +1,35 @@
+@import url(../style.css);
+
+.container{
+    width: 80vw;
+    height: 80vh;
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #d4e8e8;
+    position: absolute;
+}
+
+#box{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 10px;
+    left: 48%;
+    background-color: #ffffff;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 2px;
+}
+
+#buttons{
+    position: absolute;
+    left: 48%;
+}
+
+#return{
+    top: 1.2vh;
+    left: 12vw;
+    position: absolute;
+    width: 100px;
+}

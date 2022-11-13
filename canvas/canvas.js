@@ -24,5 +24,5 @@ btnclear.addEventListener("click", e => {
     console.log("btnclear")
 })
 
-export { context, canvas, start, end }
+export { context, canvas, start, end, btnclear }
 //ctx.fillRect(x, y, 1, 1) #desenha pixel
