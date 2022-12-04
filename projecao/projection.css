@@ -1,0 +1,47 @@
+@import url(../canvas/canvas.css);
+
+.container-buttons{
+    width: 90vw;
+    display: inline-block;
+    padding: 5px;
+}
+
+.painel {
+    background-color: rgb(108, 103, 103);
+    width: 30vw;
+    height: 100%;
+}
+
+.flex-container{
+    display: flex;
+}
+
+.projections-types{
+    position: relative;
+    padding-left: 15%;
+    padding-top: 10%;
+}
+
+.font-style{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-size: large;
+    font-family: Arial, Sans-serif;
+    /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
+}
+
+.scale-container{
+    position: relative;
+    padding-left: 15%;
+    padding-top: 10%;
+}
+
+.axios{
+    width: 40px;
+}
+
+.run{
+    position: relative;
+    padding-left: 45%;
+    padding-top: 60%;
+}

@@ -9,6 +9,10 @@ const btnclear = document.getElementById("clear")
 let start;
 let end;
 
+const clearCanvas = () =>{
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 canvas.addEventListener("mousedown", e =>{
     start = getCursorPosition(e)
     console.log("start = "+start)
@@ -24,5 +28,5 @@ btnclear.addEventListener("click", e => {
     console.log("btnclear")
 })
 
-export { context, canvas, start, end, btnclear }
+export { context, canvas, start, end, btnclear, clearCanvas}
 //ctx.fillRect(x, y, 1, 1) #desenha pixel
