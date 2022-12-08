@@ -4,6 +4,7 @@ import { vertex, edge } from "./projectionObject.js";
 const button_run = document.getElementById("button-run");
 const projection_type = document.getElementsByName("projections-types");
 const scale_type = document.getElementsByName("scale-types");
+const rotation_type = document.getElementsByName("rotation-types");
 const translation = document.getElementById("translation");
 const shearing_operation = document.getElementById("shearing");
 const globalScale = document.getElementById("global_input");
@@ -257,6 +258,41 @@ const shearing = (tempMatrix) =>{
     return globalM
 }
  
+const applyRotationOrigin = (tempMatrix) =>{
+    const op = document.getElementById("rotation-axios").value
+    const degree = document.getElementById("degree").value
+    let globalM = []
+    let t = []
+
+    switch(op){
+        case "x":
+            t = [[1,0,0,0],
+                     [0,Math.cos(degree),-Math.sin(degree),0],
+                     [0,Math.sin(degree),Math.cos(degree),0],
+                     [0,0,0,1]]
+
+            globalM = multiplyMatrices(tempMatrix,t)
+            return globalM            
+                    
+        case "y":
+            t = [[Math.cos(degree),0,Math.sin(degree),0],
+                     [0,1,0,0],
+                     [-Math.sin(degree),0,Math.cos(degree),0],
+                     [0,0,0,1]]
+
+            globalM = multiplyMatrices(tempMatrix,t)
+            return globalM  
+        case "z":
+            t = [[Math.cos(degree),-Math.sin(degree),0,0],
+                 [Math.sin(degree),Math.cos(degree),0,0],
+                 [0,0,1,0],
+                 [0,0,0,1]]
+                 
+            globalM = multiplyMatrices(tempMatrix,t)
+            return globalM  
+    }
+}
+
 button_run.addEventListener("click", e =>{
     let tempMatrix = [[1,0,0,0],
                       [0,1,0,0],
@@ -273,6 +309,10 @@ button_run.addEventListener("click", e =>{
     if(shearing_operation.checked){
         tempMatrix = shearing(tempMatrix)
         // shearing_operation.checked = false
+    }
+
+    if(rotation_type[0].checked){
+        tempMatrix = applyRotationOrigin(tempMatrix)
     }
     
     // console.log(tempMatrix)

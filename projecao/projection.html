@@ -29,9 +29,9 @@
                 <div class="local-container">
                     <input type="radio" name="scale-types" id="local" value="local">
                     <label for="local" class="font-style">Local</label>
-                    <input class="axios" id="local-x" type="number" name="x" placeholder="X" min="1" max="100"/>
-                    <input class="axios" id="local-y" type="number" name="y" placeholder="Y" min="1" max="100"/>
-                    <input class="axios" id="local-z" type="number" name="z" placeholder="Z" min="1" max="100"/>
+                    <input class="axios" id="local-x" type="number" name="x" placeholder="X" min="1" max="100" value="2"/>
+                    <input class="axios" id="local-y" type="number" name="y" placeholder="Y" min="1" max="100" value="3"/>
+                    <input class="axios" id="local-z" type="number" name="z" placeholder="Z" min="1" max="100" value="4"/>
                 </div>  
                 <div class="global-container">
                     <input type="radio" name="scale-types" id="global" value="global" checked>
@@ -49,6 +49,19 @@
             </div>
             <div class="rotation-container font-style">
                 <p>Rotação</p>
+                <input type="radio" name="rotation-types" id="rotation" value="origin">
+                <label for="origin" class="font-style">Origem</label>  
+                <input type="radio" name="rotation-types" id="rotation" value="center">
+                <label for="center" class="font-style">Centro do Objeto</label>
+                <br/><br/>
+                <label for="rotation-axios">Eixo:</label>
+                <select name="rotation-axios" id="rotation-axios">
+                  <option value="x">X</option>
+                  <option value="y">Y</option>
+                  <option value="z">Z</option>
+                </select> 
+                <label for="degree" class="font-style">Grau</label>
+                <input class="axios" id="degree" type="number" name="degree" max="100" value="0.2"/>                 
             </div>
             <div class="shearing-container font-style">
                 <p>Shearing</p>
