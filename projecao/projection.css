@@ -45,3 +45,8 @@
     padding-left: 45%;
     padding-top: 60%;
 }
+
+.translation-container{
+    position: relative;
+    padding-left: 15%;
+}

@@ -4,6 +4,7 @@ import { vertex, edge } from "./projectionObject.js";
 const button_run = document.getElementById("button-run");
 const projection_type = document.getElementsByName("projections-types");
 const scale_type = document.getElementsByName("scale-types");
+const translation = document.getElementById("translation");
 const globalScale = document.getElementById("global_input");
 
 const drawLine = (context, x0, y0,x1,y1) =>{
@@ -222,6 +223,22 @@ const choseProjection = (tempMatrix) =>{
     }
 }
 
+
+const applyTranslation = (tempMatrix) =>{
+    let globalM = []
+
+    const x = document.getElementById("translation-x").value
+    const y = document.getElementById("translation-y").value
+    const z = document.getElementById("translation-z").value
+
+    let t = [[1,0,0,0],
+             [0,1,0,0],
+             [0,0,1,0],
+             [x,y,z,1]]
+
+    globalM = multiplyMatrices(tempMatrix,t)
+    return globalM
+}
 button_run.addEventListener("click", e =>{
     let tempMatrix = [[1,0,0,0],
                       [0,1,0,0],
@@ -230,7 +247,13 @@ button_run.addEventListener("click", e =>{
 
     tempMatrix = choseScale(tempMatrix)
 
+    if(translation.checked){
+        console.log("hey")
+        tempMatrix = applyTranslation(tempMatrix)
+        // translation.checked = false
+    }
 
     // console.log(tempMatrix)
     choseProjection(tempMatrix)
 })
+
