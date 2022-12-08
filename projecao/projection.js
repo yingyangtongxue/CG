@@ -17,21 +17,34 @@ const drawLine = (context, x0, y0,x1,y1) =>{
 
 const ortogonal = (oldT) =>{
     let point;
-    let showM = []
+    let temp = []
     let t = [[1, 0, 0, 0],
              [0, 1, 0, 0],
              [0, 0, 0, 0],
              [0, 0, 0, 1]]
     
-    for(let i=0;i<vertex.length;i++){
-        let x = vertex[i][0]   
-        let y = vertex[i][1]
-        let z = vertex[i][2]
+             t = multiplyMatrices(oldT,t)
 
-        point = [x,y,z,1]        
-        showM.push(multiplyMatrix(point,t))
-    }
-    plotter(showM)
+             for(let i=0;i<vertex.length;i++){
+                 let x = vertex[i][0]   
+                 let y = vertex[i][1]
+                 let z = vertex[i][2]
+         
+                 point = [x,y,z,1]    
+                 temp.push(point)   
+                 // showM.push(multiplyMatrix(point,t))
+             }
+         
+             temp = multiplyMatrices(temp,t)
+             console.log(temp)
+         
+             for(let i=0;i<temp.length;i++){
+                 temp[i][0] /= temp[i][3]
+                 temp[i][1] /= temp[i][3]
+                 temp[i][2] /= temp[i][3]
+                 temp[i][3] /= temp[i][3]
+             }
+             plotter(temp)
 }
 
 const cavaleira = (oldT) =>{
