@@ -5,7 +5,6 @@ const button_run = document.getElementById("button-run");
 const projection_type = document.getElementsByName("projections-types");
 const scale_type = document.getElementsByName("scale-types");
 const globalScale = document.getElementById("global_input");
-let tempM = []
 
 const drawLine = (context, x0, y0,x1,y1) =>{
     context.strokeStyle = "red"
@@ -38,12 +37,14 @@ const ortogonal = (oldT) =>{
              temp = multiplyMatrices(temp,t)
              console.log(temp)
          
-             for(let i=0;i<temp.length;i++){
-                 temp[i][0] /= temp[i][3]
-                 temp[i][1] /= temp[i][3]
-                 temp[i][2] /= temp[i][3]
-                 temp[i][3] /= temp[i][3]
-             }
+             if(temp[0][3]!=1){
+                for(let i=0;i<temp.length;i++){
+                    temp[i][0] /= temp[i][3]
+                    temp[i][1] /= temp[i][3]
+                    temp[i][2] /= temp[i][3]
+                    temp[i][3] /= temp[i][3]
+                }
+            }
              plotter(temp)
 }
 
@@ -71,12 +72,14 @@ const cavaleira = (oldT) =>{
              temp = multiplyMatrices(temp,t)
              console.log(temp)
          
-             for(let i=0;i<temp.length;i++){
-                 temp[i][0] /= temp[i][3]
-                 temp[i][1] /= temp[i][3]
-                 temp[i][2] /= temp[i][3]
-                 temp[i][3] /= temp[i][3]
-             }
+             if(temp[0][3]!=1){
+                for(let i=0;i<temp.length;i++){
+                    temp[i][0] /= temp[i][3]
+                    temp[i][1] /= temp[i][3]
+                    temp[i][2] /= temp[i][3]
+                    temp[i][3] /= temp[i][3]
+                }
+            }
              plotter(temp)
 }
 
@@ -105,12 +108,15 @@ const cabinet = (oldT) =>{
     temp = multiplyMatrices(temp,t)
     console.log(temp)
 
-    for(let i=0;i<temp.length;i++){
-        temp[i][0] /= temp[i][3]
-        temp[i][1] /= temp[i][3]
-        temp[i][2] /= temp[i][3]
-        temp[i][3] /= temp[i][3]
+    if(temp[0][3]!=1){
+        for(let i=0;i<temp.length;i++){
+            temp[i][0] /= temp[i][3]
+            temp[i][1] /= temp[i][3]
+            temp[i][2] /= temp[i][3]
+            temp[i][3] /= temp[i][3]
+        }
     }
+
     plotter(temp)
 }
 
@@ -162,7 +168,9 @@ const applyGlobalScale = (tempMatrix, scale) =>{
     return globalM
 }
 
-const applyLocalScale = () =>{
+const applyLocalScale = (tempMatrix) =>{
+    let globalM = []
+
     const x = document.getElementById("local-x").value
     const y = document.getElementById("local-y").value
     const z = document.getElementById("local-z").value
@@ -171,7 +179,9 @@ const applyLocalScale = () =>{
              [0,y,0,0],
              [0,0,z,0],
              [0,0,0,1]]
-    return t
+
+    globalM = multiplyMatrices(tempMatrix,t)
+    return globalM
 }
 
 const choseScale = (tempMatrix) =>{
@@ -184,8 +194,8 @@ const choseScale = (tempMatrix) =>{
                     return t
                     //return globalScale.value
                 case "local":
-                    t = applyLocalScale()
-                    break;
+                    t = applyLocalScale(tempMatrix)
+                    return t
             }
         }
     }
