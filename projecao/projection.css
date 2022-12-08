@@ -1,5 +1,16 @@
 @import url(../canvas/canvas.css);
 
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+}
+
 .container-buttons{
     width: 90vw;
     display: inline-block;
