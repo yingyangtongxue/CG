@@ -50,3 +50,13 @@
     position: relative;
     padding-left: 15%;
 }
+
+.rotation-container{
+    position: relative;
+    padding-left: 15%;
+}
+
+.shearing-container{
+    position: relative;
+    padding-left: 15%;  
+}

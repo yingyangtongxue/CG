@@ -5,6 +5,7 @@ const button_run = document.getElementById("button-run");
 const projection_type = document.getElementsByName("projections-types");
 const scale_type = document.getElementsByName("scale-types");
 const translation = document.getElementById("translation");
+const shearing_operation = document.getElementById("shearing");
 const globalScale = document.getElementById("global_input");
 
 const drawLine = (context, x0, y0,x1,y1) =>{
@@ -239,6 +240,23 @@ const applyTranslation = (tempMatrix) =>{
     globalM = multiplyMatrices(tempMatrix,t)
     return globalM
 }
+
+const shearing = (tempMatrix) =>{
+    const shearing = document.getElementsByClassName("shearing");
+    let globalM = []
+
+    let t = [ [ parseFloat(shearing[0].value),parseFloat(shearing[1].value),parseFloat(shearing[2].value),parseFloat(shearing[3].value) ],
+              [ parseFloat(shearing[4].value),parseFloat(shearing[5].value),parseFloat(shearing[6].value),parseFloat(shearing[7].value) ],
+              [ parseFloat(shearing[8].value),parseFloat(shearing[9].value),parseFloat(shearing[10].value),parseFloat(shearing[11].value) ],
+              [ parseFloat(shearing[12].value),parseFloat(shearing[13].value),parseFloat(shearing[14].value),parseFloat(shearing[15].value) ]
+            ]
+    
+    
+    console.log(t)
+    globalM = multiplyMatrices(tempMatrix,t)
+    return globalM
+}
+ 
 button_run.addEventListener("click", e =>{
     let tempMatrix = [[1,0,0,0],
                       [0,1,0,0],
@@ -248,11 +266,15 @@ button_run.addEventListener("click", e =>{
     tempMatrix = choseScale(tempMatrix)
 
     if(translation.checked){
-        console.log("hey")
         tempMatrix = applyTranslation(tempMatrix)
         // translation.checked = false
     }
 
+    if(shearing_operation.checked){
+        tempMatrix = shearing(tempMatrix)
+        // shearing_operation.checked = false
+    }
+    
     // console.log(tempMatrix)
     choseProjection(tempMatrix)
 })
