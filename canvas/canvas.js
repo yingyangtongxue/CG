@@ -1,5 +1,5 @@
 const canvas = document.querySelector("canvas")
-const context = canvas.getContext("2d")
+const context = canvas.getContext("2d", { willReadFrequently: true })
 
 
 const getCursorPosition =  (e) => [ e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop]
