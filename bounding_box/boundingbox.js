@@ -55,8 +55,21 @@ const setPolygonLimits = () =>{
             boundBox.limits.min.y = polygon.vertex[i][1]
         }
     }
+
+    boundBox.vertex.push([boundBox.limits.min.x,boundBox.limits.min.y])
+    boundBox.vertex.push([boundBox.limits.max.x,boundBox.limits.min.y])
+    boundBox.vertex.push([boundBox.limits.max.x,boundBox.limits.max.y])
+    boundBox.vertex.push([boundBox.limits.min.x,boundBox.limits.max.y])
+
+    boundBox.edge.push([0,1])
+    boundBox.edge.push([1,2])
+    boundBox.edge.push([2,3])
+    boundBox.edge.push([3,0])
+        
     context.strokeStyle = "#e65300"
     drawBoundBox(boundBox.limits.min.x,boundBox.limits.min.y,boundBox.limits.max.x,boundBox.limits.max.y)
+    console.log(boundBox)
+    console.log(polygon)
 }
 const drawBoundBox = (x0,y0,x1,y1) =>{
     context.beginPath()
