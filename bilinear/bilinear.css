@@ -1,0 +1,5 @@
+@import url(../canvas/canvas.css);
+
+canvas {
+    background-color: black;
+}
