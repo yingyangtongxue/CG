@@ -17,7 +17,7 @@ const drawLine = (context, x0, y0,x1,y1) =>{
     context.stroke()
 }
 
-const ortogonal = (oldT) =>{
+export const ortogonal = (oldT) =>{
     let point;
     let temp = []
     let t = [[1, 0, 0, 0],
